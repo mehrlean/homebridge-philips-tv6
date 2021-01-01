@@ -94,7 +94,7 @@ class PhilipsTV {
         });
     };
 
-    sendKey = key => this.api("input/key", {key});
+    sendKey = id => this.api("sources/current", {id});
     setChannel = ccid => this.api("activities/tv", {channel: {ccid}, channelList: {id: "allsat"}});
     launchApp = app => this.api("activities/launch", app);
     getChannelList = () => this.api("channeldb/tv/channelLists/all").then((response) => {
