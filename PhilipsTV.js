@@ -137,8 +137,8 @@ class PhilipsTV {
     };
 
     setSource = async (input, callback) => {
-        if (input.channel) {
-            await this.sendKey("WatchTV");
+        if (input.channel &&item.source) {
+            await this.sendKey(item.source);
 //            await this.sendKey("Digit" + input.channel);
 //            await this.sendKey("Confirm");
             const ccid = await this.presetToCCid(input.channel);
@@ -146,7 +146,7 @@ class PhilipsTV {
         } else if (input.launch) {
             await this.launchApp(input.launch);
         } else {
-            await this.sendKey("WatchTV");
+            await this.sendKey(item.source);
         }
         callback(null);
     };
